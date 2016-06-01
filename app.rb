@@ -29,12 +29,17 @@ class App < Sinatra::Base
   end
 
   get '/watchlater' do
-    if params[:v]
-      playlist = Yt::Playlist.new(id: 'WL', auth: Credentials.youtube_account)
-      playlist.add_video(params[:v])
+    content_type 'text/plain'
+    begin
+      if params[:v]
+        playlist = Yt::Playlist.new(id: 'WL', auth: Credentials.youtube_account)
+        playlist.add_video(params[:v])
 
-      'OK'
-    else
+        'OK'
+      else
+        'OOPS'
+      end
+    rescue Credentials::InvalidYoutubeCredentials
       'OOPS'
     end
   end

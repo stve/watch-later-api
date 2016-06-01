@@ -18,8 +18,6 @@ module Credentials
   end
 
   def from_omniauth(auth)
-    puts auth['credentials'].inspect
-
     Credentials.redis.mapped_hmset('watch-later-credentials', {
       access_token: auth['credentials']['token'],
       refresh_token: auth['credentials']['refresh_token'],
