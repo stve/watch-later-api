@@ -5,11 +5,6 @@ require 'omniauth-google-oauth2'
 require 'yt'
 require_relative 'lib/credentials'
 
-Yt.configure do |config|
-  config.client_id = ENV['YT_CLIENT_ID']
-  config.client_secret = ENV['YT_CLIENT_SECRET']
-end
-
 class App < Sinatra::Base
   use Rack::Session::Cookie, secret: ENV['RACK_COOKIE_SECRET']
 
@@ -24,17 +19,23 @@ class App < Sinatra::Base
   get '/auth/:provider/callback' do
     content_type 'text/plain'
     Credentials.from_omniauth(request.env['omniauth.auth'].to_hash)
+
+    "All set! Your credentials have been stored for future use."
   end
 
   get '/auth/failure' do
     content_type 'text/plain'
-    request.env['omniauth.auth'].to_hash.inspect rescue "No Data"
+    request.env['omniauth.auth'].to_hash.inspect rescue "An error occurred while processing your authorization."
   end
 
   get '/watchlater' do
-    playlist = Yt::Playlist.new(id: 'WL', auth: Credentials.youtube_account)
-    playlist.add_video params[:v]
+    if params[:v]
+      playlist = Yt::Playlist.new(id: 'WL', auth: Credentials.youtube_account)
+      playlist.add_video(params[:v])
 
-    'OK'
+      'OK'
+    else
+      'OOPS'
+    end
   end
 end
