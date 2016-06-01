@@ -26,11 +26,15 @@ The server requires 4 environment variables:
 
 #### Setup on Heroku
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+The application is a simple Sinatra app that can easily run on the [Heroku Buildpack for Ruby](https://github.com/heroku/heroku-buildpack-ruby). Simply clone the repository and push to heroku (or use the deploy button above) to create your instance. Once launched, be sure to configure your environment variables. You'll also need to add the Redis To Go add-on.
+
+Once running, you can visit `https://<application.hostname>/auth/google_oauth2` to authorize your YouTube account. Then add the workflow below and you are ready to roll.
 
 ### Setup on Workflow
 
-Add the [workflow]([https://workflow.is/workflows/7bf6f669b8074b0e905d9e49160281fd]) to your Workflow IOS app. At minimum, you'll want to adjust the `rootUrl` variable to point it to your web service location. The workflow is designed to run as an Action Extension. Typically I use it by sharing a YouTube URL (or shortlink) and invoking the Workflow from the share menu.
+Add the [workflow]([https://workflow.is/workflows/7bf6f669b8074b0e905d9e49160281fd]) to your Workflow IOS app. At minimum, you'll want to adjust the `rootUrl` variable to point it to your web service location. The workflow is designed to run as an Action Extension. Typically I use it by sharing a YouTube URL (or shortlink) and invoking the Workflow from the share menu in iOS.
 
 ## Copyright
 
