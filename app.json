@@ -1,0 +1,6 @@
+{
+  "name": "Watch Later Workflow",
+  "description": "YouTube Watch Later playlist Workflow integration",
+  "repository": "https://github.com/stve/watch-later",
+  "keywords": ["ios", "workflow", "youtube"]
+}
