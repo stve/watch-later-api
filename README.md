@@ -34,7 +34,7 @@ Once running, you can visit `https://<application.hostname>/auth/google_oauth2` 
 
 ### Setup on Workflow
 
-Add the [workflow](https://cdn.rawgit.com/stve/watch-later/master/workflow/Add%20to%20YouTube%20Watch%20Later%20playlist.wflow) to your Workflow iOS app. At minimum, you'll want to adjust the `rootUrl` variable to point it to your web service location. The workflow is designed to run as an Action Extension. Typically I use it by sharing a YouTube URL (or shortlink) and invoking the Workflow from the share menu in iOS.
+Add the [workflow](https://cdn.rawgit.com/stve/watch-later/master/workflow/Add%20to%20YouTube%20Watch%20Later%20playlist.wflow) to your Workflow iOS app. At minimum, you'll want to adjust the `rootUrl` variable to point it to your web service location. The workflow is designed to run as an Action Extension. Typically I use it by sharing a YouTube URL (or shortlink) and invoking the Workflow from the share menu in iOS. Refer to the [usage documentation](docs/README.md) for a more detailed explanation of how to use it.
 
 ## Copyright
 
