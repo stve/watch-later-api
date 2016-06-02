@@ -3,6 +3,7 @@ require 'sinatra/base'
 require 'omniauth'
 require 'omniauth-google-oauth2'
 require 'yt'
+require 'addressable/uri'
 require_relative 'lib/credentials'
 
 class App < Sinatra::Base
@@ -31,16 +32,29 @@ class App < Sinatra::Base
   get '/watchlater' do
     content_type 'text/plain'
     begin
-      if params[:v]
+      if video_id = extract(params[:url])
         playlist = Yt::Playlist.new(id: 'WL', auth: Credentials.youtube_account)
-        playlist.add_video(params[:v])
+        playlist.add_video(video_id)
 
         'OK'
       else
-        'OOPS'
+        'OOPS: Invalid URL'
       end
-    rescue Credentials::InvalidYoutubeCredentials
-      'OOPS'
+    rescue => e
+      "OOPS: #{e}"
+    end
+  end
+
+  helpers do
+    def extract(url)
+      uri = Addressable::URI.parse(url)
+
+      if url =~ /youtube\.com/
+        uri.query_values['v']
+      elsif url =~ /youtu\.be/
+        uri = Addressable::URI.parse(url)
+        uri.path[1..-1]
+      end
     end
   end
 end

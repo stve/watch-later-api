@@ -1,8 +1,6 @@
 require 'redis'
 
 module Credentials
-  class InvalidYoutubeCredentials < StandardError ; end
-
   extend self
 
   def redis?
@@ -30,7 +28,7 @@ module Credentials
     if creds
       Yt::Account.new(creds.symbolize_keys.slice(:access_token, :refresh_token, :expires_at))
     else
-      raise InvalidYoutubeCredentials
+      raise "Invalid Credentials"
     end
   end
 end
