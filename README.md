@@ -28,7 +28,7 @@ The server requires 4 environment variables:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-The application is a simple Sinatra app that can easily run on the [Heroku Buildpack for Ruby](https://github.com/heroku/heroku-buildpack-ruby). Simply clone the repository and push to heroku (or use the deploy button above) to create your instance. Once launched, be sure to configure your environment variables. You'll also need to add the Redis To Go add-on.
+The application is a Sinatra app that can run on the [Heroku Buildpack for Ruby](https://github.com/heroku/heroku-buildpack-ruby). Clone the repository and push to heroku (or use the deploy button above) to create your instance. Once launched, be sure to configure your environment variables. You'll also need to add the Redis To Go add-on.
 
 Once running, you can visit `https://<application.hostname>/auth/google_oauth2` to authorize your YouTube account. Then add the workflow below and you are ready to roll.
 
