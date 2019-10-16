@@ -17,7 +17,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    redirect 'https://github.com/stve/watch-later'
+    redirect 'https://github.com/stve/watch-later-api'
   end
 
   get '/auth/:provider/callback' do
