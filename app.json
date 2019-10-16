@@ -6,7 +6,7 @@
   "stack": "heroku-18",
   "buildpacks": [
     {
-      "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
+      "url": "heroku/ruby"
     }
   ]
 }
